@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% extends "firstapp/base.html" %}
+{% block body_block%}
+
+<div class="page_specific_heading">
+<h1>Ranking Reports</h1>
+</div>
+
+<table class="ranking_report">
+<thead class="border_thead">
+<tr class="table_row_data">
+  <td><th>Name</th></td>
+  <td><th>Rank</th></td>
+  <td><th>Score</th></td>
+  <td><th>Emotions</th></td>
+  <td><th>Rating</th></td>
+</tr>
+</thead>
+
+<tr><td><center><div class="alert alert-danger">
+  <strong>No Data</strong> Right Now
+</div></center></td></tr>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,340 @@
+body{
+background-color: #D8E5DE !important;
+}
+
+/* --------------------------Login Panel Styling------------------------ */
+
+.loginpanel{
+background-color: #e7e7e7;
+height: 560px;
+margin-top: 20px;
+border-radius: 10px;
+overflow: hidden;
+box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.logo_image{
+position: relative;
+right: 120px;
+top: 50px;
+}
+.logo_heading{
+position: relative;
+bottom: 80px;
+left: 55px;
+}
+#email-login,#pwd-login
+{
+  width:360px;
+  height: 45px;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+  bottom: 45px;
+  background-color: #17221E !important;
+
+}
+.form-control{
+background-color: #17221E !important;
+color:#fff !important;
+
+
+}
+input[type="email"]::placeholder { /* Firefox, Chrome, Opera */
+    color: #fff;
+    font-weight: 700;
+}
+input[type="text"]::placeholder { /* Firefox, Chrome, Opera */
+    color: #fff;
+    font-weight: 700;
+}
+
+
+
+.remember_box{
+margin-left: 0px;
+margin-right: 100px;
+position: relative;
+bottom: 40px;
+font-weight: bold;
+}
+.forgot_pass{
+position: relative;
+bottom: 40px;
+font-weight: bold;
+
+}
+.forgot_pass a{
+text-decoration: none !important;
+
+}
+
+.login-button{
+position: relative;
+bottom: 47px;
+margin: 0px;
+background-color: transparent;
+border-radius: 20px;
+border:2px solid black;
+width: 300px;
+height: 50px;
+}
+
+.login-button:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.social_login{
+margin: 0px;
+padding: 0px;
+position: relative;
+bottom:30px;
+}
+
+/* -------------------------Menu Styling--------------------------------- */
+
+.menu-container{
+width: 300px;
+height:100%;
+float: left;
+background-color: #e7e7e7;
+height: 100%;
+max-height: 100%;
+border-radius: 0px 10px 20px 20px;
+overflow: hidden;
+box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+
+
+}
+.container-fluid {
+  padding: 0px !important;
+  width: 100% !important;
+}
+.logo{
+padding: 10px 0px 0px 10px;
+margin:0px;
+width: 300px;
+}
+
+.menu{
+padding: 10px;
+
+}
+.menu ul{
+ list-style-type: none;
+padding: 10px;
+margin: 10px;
+}
+.menu ul li{
+padding: 10px;
+margin: 10px;
+}
+.menu ul li a{
+text-decoration: none;
+color: #000;
+font-size: 16px;
+font-weight: bold;
+}
+.menu ul li:hover{
+text-decoration: none;
+width: 100%;
+transition: 0.5s;
+color: #000;
+background-color: #84D2BD;
+font-size: 16px;
+font-weight: bold;
+}
+.active { background-color: #000; }
+span{
+padding: 5px;
+
+}
+.menu .current{
+opacity: 0.5;
+
+}
+
+.content-container{
+float: left;
+margin: 0px !important;
+padding: 0px !important;
+
+}
+
+/* -------------------------Header Styling--------------------------------- */
+.header{
+
+width: 100%;
+height: 100px;
+margin: 0px !important;
+padding: 0px !important;
+border-radius: 0px 20px 20px 5px;
+overflow: hidden;
+box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+-webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+
+}
+.user_access{
+color: #4CBE8C;
+float: right;
+position: relative;
+bottom: 58px;
+right: 150px;
+font-size: 22px;
+font-family: sans-serif;
+font-weight: 600;
+padding: 5px 0 0;
+}
+.logout-icon{
+float: right;
+position: relative;
+bottom: 65px;
+left: 100px;
+border-left: 2px solid #000;
+
+}
+/* -------------------------page  title   Styling--------------------------------- */
+.page_specific_heading{
+height: 70px;
+width: 100%;
+padding: 10px;
+border-bottom: 1px solid #000;
+margin-right: 0px !important;
+margin-left: 0px !important;
+
+}
+
+/* -------------------------Button  Styling--------------------------------- */
+
+.invite-button{
+float: right;
+overflow: hidden;
+}
+
+
+.invite-button{
+text-align: right;
+margin-top: 12px;
+width: 100px;
+height: 40px;
+}
+.btn {
+  background-color: #11AB6B;
+  border: none;
+  color: white;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.btn:hover{
+background-color: transparent;
+border: 2px solid #000;
+color: #000;
+
+}
+.fa{
+width: 20px;
+height: 20px;
+
+}
+.search-candidate{
+  width: 120px;
+}
+.search-candidate{
+
+width: 150px;
+}
+/* -------------------------textfield rows Styling--------------------------------- */
+
+.cadidate_Searching{
+width: 100%;
+height: 90px;
+border-bottom: 1px solid #000;
+margin-right: 0px !important;
+margin-left: 0px !important;
+}
+.position{
+
+margin-top: 20px !important;
+
+}
+
+#interview_status{
+  color: #fff;
+  font-weight: 700;
+
+}
+#interview_status option{
+  color: #fff;
+  font-weight: 700;
+
+}
+
+#rows_status{
+  color: #fff;
+  font-weight: 700;
+
+}
+#rows_status option{
+  color: #fff;
+  font-weight: 700;
+
+}
+
+
+
+
+/* -------------------------table Styling--------------------------------- */
+
+
+.ranking_report{
+width: 100%;
+height: auto;
+margin-bottom: 0;
+font-family: 'Source Sans Pro', sans-serif;
+border: 0;
+border-top: 1px solid #ddd;
+
+
+}
+.ranking_report .border_thead{
+box-shadow: 0 0 0;
+border-bottom: 2px solid #000;
+}
+.ranking_report .table_row_data{
+float: left;
+width: 100%;
+}
+
+.ranking_report .table_row_data td{
+padding: 20px 40px 20px 40px;
+}
+
+/* -------------------------rows Styling--------------------------------- */
+.job_table{
+
+margin: 0px !important;
+padding: 0px !important;
+}
+.number_rows{
+  margin: 0px !important;
+  padding: 0px !important;
+  border-bottom: 2px solid #000;
+  height: 90px;
+}
+.number_row_left{
+float: left;
+
+}
+.number_row_left b{
+
+text-align: right;
+}
+
+
+.number_row_right{
+text-align: right;
+}

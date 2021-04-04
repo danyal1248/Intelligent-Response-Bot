@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>HedgeHog</title>
+{% include 'firstapp/files.html' %}
+</head>
+<body>
+  <div class="jumbotron">
+    <div class="menu">
+      <ul>
+
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'user_logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'first_app:register' %}">Register</a></li>
+          <li><a href="{% url 'first_app:user_login' %}">Login</a></li>
+          {% endif %}
+
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

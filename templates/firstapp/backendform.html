@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<title>Working Form</title>
+<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+<script src="{% static 'js/bootstrap.min.js' %}">
+</script>
+
+</head>
+<body>
+
+{{ form.username }}
+{{ form.password }}
+</body>
+</html>

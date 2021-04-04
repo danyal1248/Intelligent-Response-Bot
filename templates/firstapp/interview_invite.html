@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends "firstapp/base.html" %}
+{% block body_block%}
+<div class="row page_specific_heading">
+
+<div class="col-sm-6"><h1>Interview Invites</h1></div>
+
+<div class="col-sm-6 invite-button">
+<button class="btn invite-candidate"><i class="fa fa-child"></i>Invite Cadidates</button>
+
+</div>
+
+</div>
+
+<div class="row cadidate_Searching">
+
+<div class="col-sm-3"><input type="text" class="position form-control" placeholder="Candidate Name"></div>
+<div class="col-sm-3"><select class="position form-control" id="interview_status">
+    <option value="" selected disabled hidden>Status</option>
+    <option>Pending</option>
+    <option>Interview Started</option>
+    <option>Interview Completed</option>
+  </select></div>
+<div class="col-sm-3"><input type="text" class="position form-control" placeholder="Select A job"></div>
+<div class="col-sm-3"><button class="position btn search-candidate">Search</button>
+<button class="position btn ">Reset</button>
+</div>
+
+</div>
+{% endblock %}
