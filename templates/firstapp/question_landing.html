@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% extends "firstapp/base.html" %}
+
+{% block body_block%}
+
+
+<div class="row page_specific_heading">
+
+<div class="col-sm-6"><h1>Manage Questions</h1></div>
+
+<div class="col-sm-6 invite-button">
+
+<div class="col-sm-3">
+<form action="/Question_bank">
+    <button class="btn job-Multiple" type="submit">Add Multiple Questions</button>
+</form>
+</div>
+
+<div class="col-sm-3">
+<form action="/Question_bank_Detail">
+    <button class="btn job-Detailed" type="submit">Add Detailed Questions</button>
+</form>
+
+</div>
+</div>
+</div>
+
+<div class="row cadidate_Searching">
+<div class="col-sm-3"><input type="text" class="position form-control" placeholder="Question"></div>
+<div class="col-sm-3"><select class="position form-control" id="interview_status">
+    <option value="" selected disabled hidden>--Question Type--</option>
+    <option>Text</option>
+    <option>Single Choice</option>
+    <option>Multiple Choice</option>
+  </select></div>
+  <div class="col-sm-3"><select class="position form-control" id="interview_status">
+      <option value="" selected disabled hidden>--Answer Type--</option>
+      <option>Video</option>
+      <option>Text</option>
+    </select></div>
+<div class="col-sm-3">
+  <button class="position btn search-candidate">Search</button>
+  <button class="position btn ">Reset</button>
+</div>
+
+</div>
+
+
+<div class="row number_rows">
+<div class="col-sm-2  number_row_left">
+  <select class="position form-control" id="rows_status">
+    <option>5</option>
+    <option>10</option>
+    <option>15</option>
+  </select>
+  <b>Record Per Page</b>
+</div>
+<div class="col-sm-10  number_row_right"><button class="position btn btn-danger">Delete</button></div>
+</div>
+{% if record %}
+<div class="alert alert-success" role="success">
+<b>{{record}}</b>
+</div>
+{% endif %}
+
+<div class="row job_table">
+  <table class="ranking_report">
+
+    {% if Question_Bank_data or Question_Bank_Detail %}
+    <thead class="border_thead">
+    <tr>
+      <th>QUESTION</th>
+      <th>QUESTION TYPE</th>
+      <th>QUESTION Domain</th>
+      <th>Department</th>
+    </tr>
+    </thead>
+    <tbody class="border_tbody">
+    {% for row in Question_Bank_data %}
+    <tr>
+    <th>{{ row.question }}</th>
+    <th>MCQ'S Based Question</th>
+    <th>{{ row.Question_Domain }}</th>
+    <th>{{ row.Department }}</th>
+    <th><a href="/Question-bank-landing/?user={{user}}&method=mcq&job_delete={{row.detail_id}}"><img src="/static/images/delete.png" width="20" height="20"></a></th>
+    </tr>
+    {% endfor %}
+    {% for row in Question_Bank_Detail %}
+    <tr>
+    <th>{{ row.question }}</th>
+    <th>Detailed Question</th>
+    <th>{{ row.Question_Domain_Detail }}</th>
+    <th>{{ row.Department }}</th>
+    <th><a href="/Question-bank-landing/?user={{user}}&method=detail&job_delete={{row.detail_id}}"><img src="/static/images/delete.png" width="20" height="20"></a></th>
+    </tr>
+    {% endfor %}
+    </tbody>
+    {% else %}
+    <div class="alert alert-success" role="success">
+    <b>"You dont have data RightNow"</b>
+    </div>
+
+    {% endif %}
+
+  </table>
+</div>
+{% endblock %}

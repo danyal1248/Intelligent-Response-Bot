@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% extends "firstapp/base.html" %}
+{% block body_block%}
+{% if ver == "True" %}
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Emotion Analysis"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{name} - {y}%",
+		dataPoints: [
+			{ y: {{happy}}, name: "Happy", exploded: true },
+			{ y: {{fear}}, name: "Fear" },
+			{ y: {{surprise}}, name: "Surprise" },
+			{ y: {{sad}}, name: "Sad" },
+			{ y: {{neutral}}, name: "Neutral" },
+			{ y: {{disgust}}, name: "Disgust" },
+			{ y: {{angry}}, name: "Angry"}
+		]
+	}]
+});
+chart.render();
+
+
+
+var charttwo = new CanvasJS.Chart("chartContainertwo", {
+	exportEnabled: true,
+	animationEnabled: true,
+	title:{
+		text: "Text Sentiment Analysis"
+	},
+	legend:{
+		cursor: "pointer",
+		itemclick: explodePie
+	},
+	data: [{
+		type: "pie",
+		showInLegend: true,
+		toolTipContent: "{name}: <strong>{y}%</strong>",
+		indexLabel: "{name} - {y}%",
+		dataPoints: [
+			{ y: {{positive_Emotions}}, name: "Positive Emotions", exploded: true },
+			{ y: {{Negative_Emotions}}, name: "Negative Emotions" },
+			{ y: {{Neutral_Emotions}}, name: "Neutral Emotions" },
+		]
+	}]
+});
+charttwo.render();
+}
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.chart.render();
+
+}
+
+function explodePie (e) {
+	if(typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+	} else {
+		e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+	}
+	e.charttwo.render();
+
+}
+</script>
+<div class="page_specific_heading">
+<h1>Report</h1>
+</div>
+
+<table class="ranking_report">
+<thead class="border_thead">
+<tr class="table_row_data">
+</tr>
+<br>
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<tr class="table_row_data">
+  <br>
+  <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+  <br>
+  <br>
+  <div id="chartContainertwo" style="height: 370px; width: 100%;"></div>
+</tr>
+</thead>
+</table>
+{% else %}
+<div class="alert alert-danger" role="alert">
+<b>Interviewer Not Give His Interview RightNow</b>
+</div>
+{% endif %}
+{% endblock %}

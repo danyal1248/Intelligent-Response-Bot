@@ -9,13 +9,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="{% static 'js/bootstrap.min.js' %}">
 </script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+
 
 </head>
 <body>
 <div class="container-fluid">
   <div class="menu-container col-md-3">
   <div class="logo">
-    <a href="/dashboard">
+    <a href="/dashboard/">
     <img src="{% static 'images/logo_icon.png' %}" width="80" height="120">
     <img src="{% static 'images/heading.png' %}" width="190" height="100" >
   </a>
@@ -23,10 +26,6 @@
   <div class="menu">
   <ul>
 {% with urlname=request.resolver_match.url_name %}
-  <li>
-  <span class="response-icon"><img src="{% static 'images/visibility.png' %}" width="25px" height="25px"></span>
-    <a href="#">View Responses</a>
-  </li>
 
   <li>
   <span class="report-icon"><img src="{% static 'images/115948.png' %}" width="25px" height="25px"></span>
@@ -40,12 +39,12 @@
 
   <li>
   <span class="question-icon"><img src="{% static 'images/help.png' %}" width="25px" height="25px"></span>
-    <a class="{% if urlname == 'questionbank' %}current{% endif %}" href="{% url 'first_app:questionbank' %}">Question Bank</a>
+    <a class="{% if urlname == 'questionbank' %}current{% endif %}" href="{% url 'first_app:Question_bank_landing'  %}">Question Bank</a>
   </li>
 
   <li>
   <span class="Job-Management-icon"><img src="{% static 'images/approved.png' %}" width="25px" height="25px"></span>
-    <a class="{% if urlname == 'job_management' %}current{% endif %}" href="{% url 'first_app:job_management' %}">Job Management</a>
+    <a class="{% if urlname == 'job_management' %}current{% endif %}" href="{% url 'first_app:job_management' user=user %}">Job Management</a>
   </li>
 
   <li>
@@ -80,3 +79,6 @@
 {% endblock %}
 </div>
 </div>
+ <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</body>
+</html>

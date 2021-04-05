@@ -1,24 +1,268 @@
 <!DOCTYPE html>
-
+{% load staticfiles %}
 <html>
+
 <head>
-<title>HedgeHog</title>
-{% include 'firstapp/files.html' %}
+  <meta charset="utf-8">
+  <title>HedgeHog Technologies</title>
+  <!-- google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu&display=swap" rel="stylesheet">
+  <!-- css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="{% static 'css/style-index.css' %}" type="text/css" rel="stylesheet">
+
+
+
+
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/c876db0a55.js" crossorigin="anonymous"></script>
+  <!-- bootstrap scripts -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </head>
+
 <body>
-  <div class="jumbotron">
-    <div class="menu">
-      <ul>
 
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'user_logout' %}">Logout</a></li>
-          {% else %}
-          <li><a href="{% url 'first_app:register' %}">Register</a></li>
-          <li><a href="{% url 'first_app:user_login' %}">Login</a></li>
-          {% endif %}
+  <section class="colored" id="title">
+    <div class="container-fluid">
+      {% if alert %}
+      <div class="alert alert-success" role="succcess">
+      <b>{{alert}}</b>
+      </div>
+      {% endif %}
 
-      </ul>
+      <!-- Nav Bar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Hedgehog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="navbar-item">
+              <a class="nav-link" href="#cta">Contact</a>
+            </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="#pricing">Pricing</a>
+            </li>
+            <li class="navbar-item">
+              <a class="nav-link" href="#testimonials">Features</a>
+            </li>
+      {% if user.is_authenticated %}
+      <li class="navbar-item"><a class="nav-link" href="{% url 'user_logout' %}">Logout</a></li>
+      {% else %}
+      <li class="navbar-item"><a class="nav-link" href="{% url 'first_app:register' %}">Register</a></li>
+      <li class="navbar-item"><a class="nav-link" href="{% url 'first_app:user_login' %}">Login</a></li>
+      {% endif %}
+          </ul>
+        </div>
+      </nav>
+
+
+
+      <!-- Title -->
+
+      <div class="row">
+        <div class="col-lg-6 ">
+          <h1 class="big-heading">TEXT AI + VIDEO AI.</h1>
+          <h5 class="bot-description">Leverage AI for Candidate Follow-up and Video PreScreening </h5>
+          <br>
+          <input type="email" class="form-control" name="Email" placeholder="Enter your Business Email">
+        <a href="{% url 'first_app:user_login' %}"><button type="button" class="btn btn-dark btn-lg download-button">Login</button></a>
+        <a href="{% url 'first_app:register' %}">  <button type="button" class="btn btn-outline-light btn-lg download-button">Free SignUp</button></a>
+
+        </div>
+        <div class="col-lg-6">
+          <img class="title-image" src="{% static 'images/bot-image.jpg' %}" alt="iphone-mockup">
+        </div>
+
+      </div>
     </div>
-  </div>
+  </section>
+
+
+  <!-- Features -->
+
+  <section class="white" id="features">
+    <div class="row">
+
+      <div class="col-lg-4">
+        <i class="icon far fa-check-circle fa-4x"></i>
+        <h3 class="feature-title">Easy to use.</h3>
+        <p>So easy to use, both for the interviewer and interviewee.</p>
+      </div>
+      <div class="col-lg-4">
+        <i class="icon fas fa-bullseye fa-4x"></i>
+        <h3 class="feature-title">Elite Clientele</h3>
+        <p>We recruit the best.</p>
+      </div>
+      <div class="col-lg-4">
+        <i class="icon fas fa-heart fa-4x"></i>
+        <h3 class="feature-title">Guaranteed to work.</h3>
+        <p>With Most effiecient results</p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Testimonials -->
+
+
+  <section class="colored" id="testimonials">
+    <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <!-- <h2 class="testimonial-text">I no longer have to sniff other dogs for love. I've found the hottest Corgi on TinDog. Woof.</h2> -->
+          <img class="testimonial-image" src="{% static 'images/Interview.jpg' %}" alt="dog-profile">
+          <!-- <em>Pebbles, New York</em> -->
+
+        </div>
+        <div class="carousel-item">
+          <!-- <h2 class="testimonial-text">My dog used to be so lonely, but with TinDog's help, they've found the love of their life. I think.</h2> -->
+          <img class="testimonial-image" src="{% static 'images/analyse.jpg' %}" alt="lady-profile">
+          <!-- <em>Beverly, Illinois</em> -->
+        </div>
+
+        <div class="carousel-item">
+          <!-- <h2 class="testimonial-text">My dog used to be so lonely, but with TinDog's help, they've found the love of their life. I think.</h2> -->
+          <img class="testimonial-image" src="{% static 'images/job.jpg' %}" alt="lady-profile">
+          <!-- <em>Beverly, Illinois</em> -->
+        </div>
+
+      </div>
+      <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+
+
+
+
+  </section>
+
+
+  <!-- Press -->
+
+
+
+
+  <!-- Pricing -->
+
+  <section class="white" id="pricing">
+
+    <h2 class="section-heading">A Plan for Every Corporate</h2>
+    <p>Simple and affordable price plans for your company.</p>
+    <div class="row">
+
+      <div class="pricing-column col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Free</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="price-text">Free</h2>
+            <p>1 Interview Per Day</p>
+            <p>10 Interviews Total</p>
+            <p>limited App Usage</p>
+            <a href="{% url 'first_app:register' %}"><button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button></a>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-column col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3>Basic Plan</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="price-text">$49 / mo</h2>
+            <p>50 Interviews per day</p>
+            <p>1500 Interviews per Month</p>
+            <p>Unlimited App Usage</p>
+          <a href="{% url 'first_app:register' %}"><button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button></a>
+
+          </div>
+        </div>
+      </div>
+      <div class="pricing-column col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            <h3>Enterprise</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="price-text">$99 / mo</h2>
+            <p>Pirority Listing</p>
+            <p>Unlimited Interviews</p>
+            <p>Unlimited App Usage</p>
+            <a href="{% url 'first_app:register' %}"><button type="button" class="btn btn-primary btn-lg btn-block">Sign Up</button></a>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+
+  <!-- Call to Action -->
+
+  <section class="cta-heading colored" id="cta">
+    <h1><em>Get in Touch</em></h1>
+    <div class="row">
+      <div class="contact-ref col-lg-6 ">
+        <h3 class="contact-reference"><i class="fas fa-phone-square-alt"></i>  Phone.</h3>
+        <h4 class="contact-reference">+92 302 2222591</h4>
+        <br>
+        <h3 class="contact-reference"><i class="far fa-envelope"></i>  Email.</h3>
+        <h4 class="contact-reference">go2shahbazakhter@gmail.com</h4>
+      </div>
+      <div class="col-lg-6">
+        <form class="contact-form" action="{% url 'index' %}" method="post">
+          {% csrf_token %}
+          <input type="text" name="" value="" placeholder="Name"><br>
+
+          <input type="email" name="" value="" placeholder="Email"><br>
+
+          <input type="text" name="" value="" placeholder="+92" ><br>
+
+          <input type="text" name="" value="" placeholder="Company"><br>
+
+          <input type="text" name="" value="" placeholder="Message (Please Mention date and time)">
+
+          <input type="submit" name="Submit" value="Submit">
+
+        </form>
+      </div>
+
+    </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+
+  <footer class="white" id="footer">
+    <i class="icon-footer fab fa-facebook fa-2x"></i>
+    <i class="icon-footer fab fa-instagram fa-2x"></i>
+    <i class="icon-footer fab fa-twitter fa-2x"></i>
+    <i class="icon-footer fas fa-envelope fa-2x"></i>
+    <p>© Copyright 2018 HedgeHog</p>
+
+  </footer>
+
 </body>
+
 </html>

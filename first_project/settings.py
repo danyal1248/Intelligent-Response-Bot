@@ -31,10 +31,14 @@ DEBUG = True
 ALLOWED_HOSTS = [
  'd42625a0.ngrok.io',
  '127.0.0.1',
- 'localhost'
+ 'localhost',
+ '13.251.97.185',
+ 'hedgehogweb.site',
+ 
 
 
 ]
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 
 # Application definition
@@ -132,7 +136,15 @@ STATICFILES_DIRS = [
 STATIC_DIR,
 ]
 
+
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 LOGIN_URL = '/first_app/user_login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.spectrum-vmlyr.com'
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST_USER = 'danyal@spectrum-vmlyr.com'
+EMAIL_HOST_PASSWORD = 'danyal@1243'

@@ -5,62 +5,34 @@
 
 
 <div class="row page_specific_heading">
-
-<div class="col-sm-6"><h1>Manage Questions</h1></div>
-
-<div class="col-sm-6 invite-button">
-<button class="btn job-create">Add Question Answer</button>
-
+  {% if alert %}
+  <div class="alert alert-danger" role="alert">
+  <b>{{alert}}</b>
+  </div>
+  {% else %}
+<div class="col-sm-9"><h1>MULTIPLE CHOICE QUESTION</h1></div>
+{% endif %}
 </div>
 
+<div class="form-popup-question-bank" id="myForm" >
+  <form method="POST" action="/Question_bank/?user={{user}}&method=Question_bank" class="form-container">
+    <h1>Enter Question Title</h1>
+    <br>
+    <br>
+    {% csrf_token %}
+    {{ form_question.Department }}
+    {{ form_question.Question_Domain }}
+    {{ form_question.question }}
+    <br>
+    {{ form_question.correct_answer }}
+    {{ form_question.choice_two }}
+    {{ form_question.choice_three }}
+    {{ form_question.choice_four }}
+
+      <br>
+      <br>
+    <button type="submit" class="btn">Add Question</button>
+  </form>
 </div>
 
-<div class="row cadidate_Searching">
-<div class="col-sm-3"><input type="text" class="position form-control" placeholder="Question"></div>
-<div class="col-sm-3"><select class="position form-control" id="interview_status">
-    <option value="" selected disabled hidden>--Question Type--</option>
-    <option>Text</option>
-    <option>Single Choice</option>
-    <option>Multiple Choice</option>
-  </select></div>
-  <div class="col-sm-3"><select class="position form-control" id="interview_status">
-      <option value="" selected disabled hidden>--Answer Type--</option>
-      <option>Video</option>
-      <option>Text</option>
-    </select></div>
-<div class="col-sm-3">
-  <button class="position btn search-candidate">Search</button>
-  <button class="position btn ">Reset</button>
-</div>
-
-</div>
-
-
-<div class="row number_rows">
-<div class="col-sm-2  number_row_left">
-  <select class="position form-control" id="rows_status">
-    <option>5</option>
-    <option>10</option>
-    <option>15</option>
-  </select>
-  <b>Record Per Page</b>
-</div>
-<div class="col-sm-10  number_row_right"><button class="position btn btn-danger">Delete</button></div>
-</div>
-
-
-<div class="row job_table">
-  <table class="ranking_report">
-  <thead class="border_thead">
-  <tr class="table_row_data">
-    <td><th>QUESTION</th> </td>
-    <td><th>QUESTION TYPE</th> </td>
-    <td><th>ANSWER TYPE</th> </td>
-    <td><th>CREATE DATE</th> </td>
-    <td><th>ACTIONS</th> </td>
-  </tr>
-  </thead>
-  </table>
-
-</div>
 {% endblock %}

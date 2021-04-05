@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "firstapp/interviewr_portal/Interview_landing.html" %}
+
+{% block body_block%}
+
+{% if detail_filled == 'False' %}
+<form action= "{% url 'first_app:detail_answer' %}" method = "POST" >
+    {% for question in form_detail %}
+<div class = 'question'><h3>{{ question.question }} </h3></div><br>
+    <input type="textarea" id="pwd-textarea" name="{{question.question}}" required>
+<br>
+    {% endfor %}
+<div style="text-align:center"> <input style="padding: 10px 35px;font-size:120%;cursor: pointer;" type="submit" class="submit btn" id="submit" value="Submit"/></div>
+    {% csrf_token %}
+</form>
+
+{% else %}
+<div class="alert alert-danger" role="alert">
+You Completed Your MCQS Questions
+</div>
+{% endif %}
+
+{% endblock %}

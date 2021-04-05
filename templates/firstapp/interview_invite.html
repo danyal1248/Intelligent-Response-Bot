@@ -6,25 +6,118 @@
 <div class="col-sm-6"><h1>Interview Invites</h1></div>
 
 <div class="col-sm-6 invite-button">
-<button class="btn invite-candidate"><i class="fa fa-child"></i>Invite Cadidates</button>
+<button class="btn invite-candidate job-create" onclick="openForm()"><i class="fa fa-child"></i>Invite Cadidates</button>
 
 </div>
 
 </div>
-
+{% if alert %}
+<div class="alert alert-danger" role="alert">
+<b>{{alert}}</b>
+</div>
+{% endif %}
 <div class="row cadidate_Searching">
 
 <div class="col-sm-3"><input type="text" class="position form-control" placeholder="Candidate Name"></div>
-<div class="col-sm-3"><select class="position form-control" id="interview_status">
-    <option value="" selected disabled hidden>Status</option>
-    <option>Pending</option>
-    <option>Interview Started</option>
-    <option>Interview Completed</option>
-  </select></div>
 <div class="col-sm-3"><input type="text" class="position form-control" placeholder="Select A job"></div>
 <div class="col-sm-3"><button class="position btn search-candidate">Search</button>
 <button class="position btn ">Reset</button>
 </div>
 
 </div>
+
+{% if invite_data %}
+
+<div class="row job_table">
+  <table class="ranking_report">
+  <thead class="border_thead">
+  <tr>
+<th>Job Title</th>
+<th>Job Code</th>
+<th>Interviewr Name</th>
+<th>Interviewr Contact Number</th>
+<th>Interviewr Experience</th>
+<th>Expiry Date</th>
+  </tr>
+  </thead>
+  <tbody class="border_tbody">
+    {% for row in invite_data %}
+    <tr>
+    <th>{{ row.jobtitle }}</th>
+    <th>{{ row.Invitation_Code }}</th>
+    <th>{{ row.Interviewr_name }}</th>
+    <th>{{ row.Interviewr_Contact_Number }}</th>
+    <th>{{ row.Interviewr_Experience }}</th>
+    <th>{{ row.Interview_expiry_date }}</th>
+    <th><a href="/Interview_Invitation/?user={{user}}&method=invite&job_delete={{row.detail_id}}"><img src="/static/images/delete.png" width="20" height="20"></a></th>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+  </table>
+
+</div>
+
+{% endif %}
+
+<div class="col-md-12">
+<div class="form-popup" id="myForm" >
+  <form method="POST" action="/Interview_Invitation/?user={{user}}&method=Interview_Invite" class="form-container">
+    <h1>Enter Job Title</h1>
+    <br>
+    <br>
+  <select name="jobtitle" class="form-control" id="pwd-login" placeholder="Select Question Domain">
+  <option value="0">Select Your Option</option>
+  {% for row in job_title_data %}
+  <option value="{{ row.job_title }}">{{ row.job_title }}</option>
+  {% endfor %}
+
+</select>
+    <br>
+    {% csrf_token %}
+    {{ form.Interviewr_name }}
+    {{ form.Interview_Email}}
+    <br>
+    {{ form.Interviewr_Resume}}
+    <br>
+    {{ form.Interviewr_Experience}}
+    <br>
+    {{ form.Interview_expiry_date}}
+    <br>
+    {{ form.Interviewr_Contact_Number}}
+    {{ form.Interviewr_Last_Company}}
+    {{ form.Interviewr_Country}}
+    {{ form.Interview_Profile}}
+
+      <br>
+      <br>
+    <button type="submit" class="btn">Entry</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+</div>
+<script>
+
+  document.querySelector(".job-create").addEventListener("click",function(){
+  document.getElementsByClassName('job_table')[0].style.visibility = 'hidden';
+  document.getElementsByClassName('number_rows')[0].style.visibility = 'hidden';
+  document.getElementsByClassName('cadidate_Searching')[0].style.visibility = 'hidden';
+
+})
+
+document.querySelector(".cancel").addEventListener("click",function(){
+  document.getElementsByClassName('job_table')[0].style.visibility = 'visible';
+  document.getElementsByClassName('number_rows')[0].style.visibility = 'visible';
+  document.getElementsByClassName('cadidate_Searching')[0].style.visibility = 'visible';
+
+
+})
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 {% endblock %}

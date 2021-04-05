@@ -4,24 +4,29 @@
 
 
 <div class="row page_specific_heading">
-
 <div class="col-sm-6"><h1>Manage Job</h1></div>
 
 <div class="col-sm-6 invite-button">
-<button class="btn job-create">Create New Job</button>
+<button class="btn job-create" onclick="openForm()">Create New Job</button>
 </div>
 </div>
 
-
+{% if alert %}
+<div class="alert alert-danger" role="alert">
+<b>{{alert}}</b>
+</div>
+{% endif %}
 
 <div class="row cadidate_Searching">
 <div class="col-sm-4"><input type="text" class="position form-control" placeholder="Job Title"></div>
-<div class="col-sm-4"><select class="position form-control" id="interview_status">
+<div class="col-sm-4">
+  <select class="position form-control" id="interview_status">
     <option value="" selected disabled hidden>Department</option>
     <option>Sales</option>
     <option>Marketing</option>
     <option>House Keeping</option>
-  </select></div>
+  </select>
+</div>
 <div class="col-sm-4">
   <button class="position btn search-candidate">Search</button>
   <button class="position btn ">Reset</button>
@@ -29,33 +34,78 @@
 
 </div>
 
-
-<div class="row number_rows">
-<div class="col-sm-2  number_row_left">
-  <select class="position form-control" id="rows_status">
-    <option>5</option>
-    <option>10</option>
-    <option>15</option>
-  </select>
-  <b>Record Per Page</b>
-</div>
-<div class="col-sm-10  number_row_right"><button class="position btn btn-danger">Delete</button></div>
-</div>
-
-
 <div class="row job_table">
   <table class="ranking_report">
   <thead class="border_thead">
-  <tr class="table_row_data">
-    <td><th>Job Code</th> </td>
-    <td><th>Job Title</th> </td>
-    <td><th>Depratments</th> </td>
-    <td><th>Expiry Date</th> </td>
-    <td><th>Actions</th> </td>
+  <tr>
+<th>Job Title</th>
+<th>Job Type</th>
+<th>Depratments</th>
+<th>Experience </th>
+<th>Expiry Date</th>
   </tr>
   </thead>
+  <tbody class="border_tbody">
+    {% for row in job_data %}
+    <tr>
+    <th>{{ row.job_title }}</th>
+    <th>{{ row.job_type }}</th>
+    <th>{{ row.department }}</th>
+    <th>{{ row.experience }}</th>
+    <th>{{ row.expiry_date }}</th>
+    <th><a href="/job_management/?user={{user}}&method=job&job_delete={{row.detail_id}}"><img src="/static/images/delete.png" width="20" height="20"></a></th>
+    </tr>
+    {% endfor %}
+
+  </tbody>
   </table>
 
 </div>
+
+
+
+<div class="form-popup" id="myForm">
+  <form method="POST" action="/job_management/?user={{user}}&method=job_management" class="form-container">
+    <h1>Job Management</h1>
+    <br>
+    <br>
+    {{ form.job_title }}
+    {{ form.job_type }}
+    {{ form.experience }}
+    {{ form.department }}
+    {{ form.expiry_date}}
+      {% csrf_token %}
+    <button type="submit" class="btn">Entry</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+
+
+
+<script>
+
+  document.querySelector(".job-create").addEventListener("click",function(){
+  document.getElementsByClassName('job_table')[0].style.visibility = 'hidden';
+  document.getElementsByClassName('number_rows')[0].style.visibility = 'hidden';
+  document.getElementsByClassName('cadidate_Searching')[0].style.visibility = 'hidden';
+
+})
+
+document.querySelector(".cancel").addEventListener("click",function(){
+  document.getElementsByClassName('job_table')[0].style.visibility = 'visible';
+  document.getElementsByClassName('number_rows')[0].style.visibility = 'visible';
+  document.getElementsByClassName('cadidate_Searching')[0].style.visibility = 'visible';
+
+
+})
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 
 {% endblock %}

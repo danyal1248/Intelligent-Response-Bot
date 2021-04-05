@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends "firstapp/interviewr_portal/Interview_landing.html" %}
+
+{% block body_block%}
+
+{% if mcqs_filled == 'False' %}
+<form action= "{% url 'first_app:interview_answer' %}" method = "POST" >
+    {% for question in form %}
+<div class = 'question'><h3>{{ question.question }} </h3></div><br>
+<div id= "choices" class='select'>
+  <label class="cont">
+    {{question.correct_answer}}
+    <input type = "checkbox" name="{{question.question}}" value="{{question.correct_answer}}">
+    <span class="checkmark"></span>
+</label>
+<label class="cont">
+  {{question.choice_two}}
+    <input type = "checkbox" name="{{question.question}}" value="{{question.choice_two}}">
+    <span class="checkmark"></span>
+</label>
+
+  <label class="cont">
+      {{question.choice_three}}
+    <input type = "checkbox" name="{{question.question}}" value="{{question.choice_three}}">
+    <span class="checkmark"></span>
+</label>
+<label class="cont">
+  {{question.choice_four}}
+    <input type = "checkbox" name="{{question.question}}" value="{{question.choice_four}}">
+    <span class="checkmark"></span>
+</label>
+</div>
+<br>
+    {% endfor %}
+<div style="text-align:center"> <input style="padding: 10px 35px;font-size:120%;cursor: pointer;" type="submit" class="submit btn" id="submit" value="Submit"/></div>
+    {% csrf_token %}
+</form>
+
+{% else %}
+<div class="alert alert-danger" role="alert">
+You Completed Your MCQS Questions
+</div>
+{% endif %}
+
+{% endblock %}

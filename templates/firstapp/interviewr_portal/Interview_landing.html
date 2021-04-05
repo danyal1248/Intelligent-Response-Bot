@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+<title>Interview Exam</title>
+<link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet">
+<link href="{% static 'css/icons.css' %}" type="text/css" rel="stylesheet">
+<link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="{% static 'js/bootstrap.min.js' %}">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+/* The container */
+.cont {
+display: block;
+position: relative;
+padding-left: 35px;
+margin-bottom: 12px;
+cursor: pointer;
+font-size: 22px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.cont input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+left: 30px;
+}
+
+/* Create a custom radio button */
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 25px;
+width: 25px;
+background-color: #eee;
+border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.cont:hover input ~ .checkmark {
+background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.cont input:checked ~ .checkmark {
+background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.cont input:checked ~ .checkmark:after {
+display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.cont .checkmark:after {
+top: 9px;
+left: 9px;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: white;
+}
+</style>
+
+</head>
+<body>
+<div class="container-fluid">
+<div class="jumbotron">
+  <div class="logov interview_Exam col-md-5">
+    <img src="{% static 'images/logo_icon.png' %}" width="50" height="50">
+    <img src="{% static 'images/heading.png' %}" width="120" height="50" >
+  </div>
+  <center>
+  <div class="col-md-4">
+    {% if alert %}
+    <div class="alert alert-danger" role="alert">
+    <b>{{alert}}</b>
+    </div>
+    {% endif %}
+  </div>
+</center>
+  <form action="/Interview_landing/" method="POST">
+  <div class="col-md-3" style="float:right;">
+    {% csrf_token %}
+    <input type="submit" class="btn success" role="alert" type="submit" value="Click Here to submit your interview">
+  </div>
+</form>
+</div>
+
+<div class="button-layout col-lg-12">
+<ul>
+{% with urlname=request.resolver_match.url_name %}
+<center>
+<li>
+  <button class="btn {% if urlname == 'Interview_Exam' %}btn btn-danger{% endif %}" onclick="relocate_MCQ()">MCQ'S Test</button>
+  <button class="btn {% if urlname == 'Interview_Detail_Exam' %}btn btn-danger{% endif %}" onclick="relocate_Detail()">General Questions</button>
+  <button class="btn {% if urlname == 'video_recorder' %}btn btn-danger{% endif %}" onclick="relocate_video()">Video Questions</button>
+</li>
+</center>
+
+{% endwith %}
+</ul>
+</div>
+<script>
+function relocate_MCQ()
+{
+     location.href = "{% url 'Interview_Exam' %}";
+}
+function relocate_Detail()
+{
+     location.href = "{% url 'Interview_Detail_Exam' %}";
+}
+function relocate_video()
+{
+     location.href = "{% url 'video_recorder' %}";
+}
+</script>
+{% block body_block%}
+{% endblock %}
+
+<script href="http://www.w3.org/TR/2011/WD-webrtc-20111027/"></script>
+</body>
+</html>

@@ -8,19 +8,27 @@
 
 <table class="ranking_report">
 <thead class="border_thead">
-<tr class="table_row_data">
-  <td><th>Name</th></td>
-  <td><th>Rank</th></td>
-  <td><th>Score</th></td>
-  <td><th>Emotions</th></td>
-  <td><th>Rating</th></td>
+<tr>
+  <th>Name</th>
+  <th>InvitationCode</th>
+  <th>Click To Check Your Report</th>
 </tr>
 </thead>
+<tbody>
 
-<tr><td><center><div class="alert alert-danger">
-  <strong>No Data</strong> Right Now
-</div></center></td></tr>
+  {% for row in data %}
+<tr>
+  <form action= "{% url 'first_app:rankingreport' %}" method = "POST" >
+  <th><input name='name' value="{{row.Interviewr_name}}">{{row.Interviewr_name}}</th>
+  <th><input name='code' value="{{row.Invitation_Code}}">{{row.Invitation_Code}}</th>
+  <th><input style="float:right;" type="submit" name="check" class="submit btn" id="submit" value="See Details"/></th>
+  {% csrf_token %}
+  </form>
+  </tr>
+  {% endfor %}
+
+</tbody>
+
 </table>
-
 
 {% endblock %}

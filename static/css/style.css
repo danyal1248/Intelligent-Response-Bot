@@ -3,7 +3,10 @@ background-color: #D8E5DE !important;
 }
 
 /* --------------------------Login Panel Styling------------------------ */
+th,td{
 
+text-align: center;
+}
 .loginpanel{
 background-color: #e7e7e7;
 height: 560px;
@@ -13,6 +16,22 @@ overflow: hidden;
 box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
 moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
 -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.registrationpanel{
+
+  background-color: #e7e7e7;
+  height: 100%;
+  margin-top: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  moz-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+
+}
+.helptext{
+
+  display: none;
 }
 .logo_image{
 position: relative;
@@ -24,7 +43,7 @@ position: relative;
 bottom: 80px;
 left: 55px;
 }
-#email-login,#pwd-login
+#email-login,#pwd-login,#id_Interviewr_Resume
 {
   width:360px;
   height: 45px;
@@ -32,6 +51,16 @@ left: 55px;
   color: #fff;
   position: relative;
   bottom: 45px;
+  background-color: #17221E !important;
+
+}
+#pwd-textarea{
+  width:360px;
+  height: 150px;
+  border-radius: 15px;
+  color: #fff;
+  position: relative;
+  bottom: 30px;
   background-color: #17221E !important;
 
 }
@@ -49,7 +78,25 @@ input[type="text"]::placeholder { /* Firefox, Chrome, Opera */
     color: #fff;
     font-weight: 700;
 }
+input[type="password"]::placeholder { /* Firefox, Chrome, Opera */
+    color: #fff;
+    font-weight: 700;
+}
 
+input[name="name"],
+input[name="code"]
+{ /* Firefox, Chrome, Opera */
+    display : none;
+}
+.table_report_data{
+  background: #de9a44;
+     margin: 3px;
+     width: 80px;
+     height: 40px;
+     display: none;
+     float: left;
+
+}
 
 
 .remember_box{
@@ -311,6 +358,13 @@ width: 100%;
 
 .ranking_report .table_row_data td{
 padding: 20px 40px 20px 40px;
+text-align: left;
+}
+
+.ranking_report .table_row_data th{
+padding: 20px 40px 20px 40px;
+text-align: left;
+
 }
 
 /* -------------------------rows Styling--------------------------------- */
@@ -338,3 +392,157 @@ text-align: right;
 .number_row_right{
 text-align: right;
 }
+
+
+
+/* -----------------------job management form-----------------*/
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: relative;
+  top : -200px;
+  margin-left: 2px;
+  border: 3px solid #f1f1f1;
+  background-color: #D8E5DE;
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: #D8E5DE;
+  border-radius: 20px;
+}
+
+/* Full-width input fields */
+.form-container input[type=text] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  width:360px;
+  height: 45px;
+  border-radius: 15px;
+  color: #fff;
+  bottom: 45px;
+  background-color: #17221E !important;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.job-Detailed{
+position:relative;
+left:260px;
+bottom:36px;
+}
+
+.button-layout ul{
+ list-style-type: none;
+
+}
+
+.table_row_data td{
+text-align:center;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+  background: #eee;
+}
+th {
+  color: black;
+  font-weight: bold;
+}
+td, th {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block;
+	}
+
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	tr { border: 1px solid #ccc; }
+
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-left: 50%;
+	}
+
+	td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+
+  

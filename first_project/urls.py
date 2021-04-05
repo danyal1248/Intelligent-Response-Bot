@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path
 from first_app import views
 from django.urls import include
-urlpatterns = [
 
+
+urlpatterns = [
     path('',include('first_app.urls')),
     path('admin/', admin.site.urls),
     path('user_logout/', views.user_logout,name='user_logout'),
     path('dashboard/', views.dashboard,name='dashboard'),
+    path('exam/',views.Interview_Exam,name='Interview_Exam'),
+    path('InterviewDetail/', views.Interview_Detail_Exam,name='Interview_Detail_Exam'),
+    path('videorecorder/', views.video_recorder,name='video_recorder'),
     path('', views.index,name='index'),
-
 ]

@@ -13,29 +13,30 @@
 </head>
 <body>
 <div class="container-fluid">
-  <div class="logo">
-    <a href="/dashboard">
-    <img src="{% static 'images/logo_icon.png' %}" width="80" height="120">
-    <img src="{% static 'images/heading.png' %}" width="190" height="100" >
-  </a>
-  </div>
-
-
 {% if registered %}
 
 <h1>Thanks for your registration </h1>
   {% else %}
 <center>
+  <div class="col-md-6 registrationpanel">
+    <div class="logo">
+      <a href="/dashboard">
+      <img src="{% static 'images/logo_icon.png' %}" width="80" height="120">
+      <img src="{% static 'images/heading.png' %}" width="190" height="100" >
+    </a>
+    </div>
 <form enctype="multipart/form-data" method="post" autocomplete="off">
 {% csrf_token %}
+<br><br>
 {{user_form.as_p}}
 {{profile_form.as_p}}
-<input type="submit" name="" value="Register">
+<input class="btn success" type="submit" name="" value="Register">
 </form>
 </center>
-
-
-  {% endif %}
+<br>
+<br>
+{% endif %}
+</div>
 </div>
 
 

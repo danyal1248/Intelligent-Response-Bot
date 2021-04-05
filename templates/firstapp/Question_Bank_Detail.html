@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends "firstapp/base.html" %}
+
+{% block body_block%}
+
+
+<div class="row page_specific_heading">
+  {% if alert %}
+  <div class="alert alert-danger" role="alert">
+  <b>{{alert}}</b>
+  </div>
+  {% else %}
+<div class="col-sm-9"><h1>Detail QUESTION</h1></div>
+{% endif %}
+
+</div>
+<div class="form-popup-question-bank" id="myForm" >
+  <form method="POST" action="/Question_bank_Detail/" class="form-container">
+    <h1>Detail Question</h1>
+    <br>
+    <br>
+      {% csrf_token %}
+    {{ form.Department }}
+    {{ form.Question_Domain_Detail }}
+    {{ form.question}}
+    <br>
+
+      <br>
+      <br>
+    <button type="submit" class="btn">Entry</button>
+  </form>
+</div>
+{% endblock %}
